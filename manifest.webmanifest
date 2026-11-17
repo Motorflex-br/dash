@@ -1,6 +1,6 @@
 {
- "name": "Dash Executivo Motorflex",
- "short_name": "Dash MF",
+ "name": "MF Gestão",
+ "short_name": "MF Gestão",
  "start_url": "./",
  "display": "standalone",
  "background_color": "#070c19",
@@ -18,5 +18,6 @@
    "type": "image/png",
    "purpose": "any"
   }
- ]
+ ],
+ "scope": "./"
 }
