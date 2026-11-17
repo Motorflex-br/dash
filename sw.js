@@ -11,6 +11,7 @@ self.addEventListener('push',e=>e.waitUntil((async()=>{
   await self.registration.showNotification(title,{body,icon:'icon-192.png',badge:'icon-192.png',tag,renotify:true,data:{url}});
 })()));
 self.addEventListener('notificationclick',e=>{e.notification.close();const u=(e.notification.data||{}).url||'';e.waitUntil((async()=>{
+  try{const c=await caches.open('mf-badge');await c.put('open',new Response(u||'#dashboard'))}catch(err){}
   const l=await self.clients.matchAll({type:'window',includeUncontrolled:true});
   for(const c of l){if('focus' in c){await c.focus();try{c.postMessage({type:'mf-open',url:u})}catch(err){}return}}
   return self.clients.openWindow(self.registration.scope+u);
